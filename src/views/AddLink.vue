@@ -191,7 +191,7 @@
 </template>
 <script>
   export default {
-    name: 'user-profile',
+    name: 'addLink',
     data() {
       return {
         model: {
