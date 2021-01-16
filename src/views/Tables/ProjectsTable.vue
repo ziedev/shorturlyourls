@@ -43,10 +43,7 @@
             {{row.budget}}
           </td>
           <td>
-            <badge class="badge-dot mr-4" :type="row.statusType">
-              <i :class="`bg-${row.statusType}`"></i>
-              <span class="status">{{row.status}}</span>
-            </badge>
+            
           </td>
           <td>
             <div class="avatar-group">
