@@ -18,7 +18,7 @@ $i=-1;
         
         $tab[$i]['ShortLink']="https://urys.xyz/".$short;
         $tab[$i]['OriginalLink']=$original;
-        $tab[$i]['Title']=$levedAt;
+        $tab[$i]['Title'] = htmlspecialchars($title);
         $tab[$i]['Time']=$time;
         $tab[$i]['Clicks']=$clic;
 

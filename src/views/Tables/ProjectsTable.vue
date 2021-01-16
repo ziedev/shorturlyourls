@@ -31,12 +31,13 @@
           <th scope="row">
             <div class="media align-items-center">
              <div class="media-body">
-                <span class="name mb-0 text-sm">{{row.OriginalLink.substring(0,40)}}... <br> {{row.Title}}</span>
+                <span class="name mb-0 text-sm">{{row.OriginalLink.substring(0,40)}}...</span> <br>
+                <span>{{row.Title.substring(0,40)}}...</span>
               </div>
             </div>
           </th>
           <td class="budget">
-            {{row.ShortLink}}
+           <span class="name mb-0 text-sm"> {{row.ShortLink}}</span>
           </td>
           <td>
             <div class="avatar-group">
