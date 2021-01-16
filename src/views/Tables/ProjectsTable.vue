@@ -20,24 +20,30 @@
                   tbody-classes="list"
                   :data="Links">
         <template slot="columns">
-          <th>Title / Original</th>
           <th>Short</th>
+          <th>Title / Original</th>
           <th>Clicks</th>
           <th>Date/Time</th>
           <th></th>
         </template>
 
         <template slot-scope="{row}">
-          <th scope="row">
+           <th class="budget">
+             <div class="media align-items-center">
+             <div class="media-body">
+                <span class="name mb-0 text-sm">{{row.ShortLink}}</span> 
+              </div>
+            </div>
+           
+          </th>
+          <td scope="row">
             <div class="media align-items-center">
              <div class="media-body">
                 <span class="name mb-0 text-sm">{{row.OriginalLink.substring(0,40)}}...</span> <br>
-                <span>{{row.Title.substring(0,40)}}...</span>
+                
               </div>
             </div>
-          </th>
-          <td class="budget">
-           <span class="name mb-0 text-sm"> {{row.ShortLink}}</span>
+            <span>{{row.Title.substring(0,40)}}...</span>
           </td>
           <td>
             <div class="avatar-group">
