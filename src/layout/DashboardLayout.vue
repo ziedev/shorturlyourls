@@ -10,13 +10,11 @@
           :link="{
             name: 'Dashboard',
             icon: 'ni ni-tv-2 text-primary',
-            path: '/dashboard'
+            path: '/'
           }"
         />
 
-        <sidebar-item :link="{name: 'Icons', icon: 'ni ni-planet text-blue', path: '/icons'}"/>
         <sidebar-item :link="{name: 'AddLink', icon: 'ni ni-single-02 text-yellow', path: '/addlink'}"/>
-        <sidebar-item :link="{name: 'Tables', icon: 'ni ni-bullet-list-67 text-red', path: '/tables'}"/>
         
 
       </template>
