@@ -16,6 +16,9 @@
           <li class="nav-item">
             <a href="https://www.ziedmaaloul.site/resume-biographie-cv-de-zied-maaloul/" class="nav-link" target="_blank">Développer</a>
           </li>
+          <li class="nav-item">
+            <a href="https://yourls.org/" class="nav-link" target="_blank">Yourls</a>
+          </li>
         </ul>
       </div>
     </div>

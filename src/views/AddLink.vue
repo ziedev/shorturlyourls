@@ -47,7 +47,7 @@
                                         </div>
                                         
                                     </div>
-                                    <center><base-button type="primary" size="md">Short Link</base-button></center>
+                                    <center><base-button type="primary" @click="getting()" size="md">Short Link</base-button></center>
                                 </div>
                                
                             </form>
@@ -75,7 +75,7 @@ import $ from 'jquery'
 	var api_url  = "http://urys.xyz/yourls-api.php";
     var response = $.get( api_url, {
     username: "username",
-    password: "password",
+    password: "pass",
     action:   "shorturl",
     format:   "json",
     url:      this.links.original,

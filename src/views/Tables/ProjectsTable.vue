@@ -6,7 +6,7 @@
       <div class="row align-items-center">
         <div class="col">
           <h3 class="mb-0" :class="type === 'dark' ? 'text-white': ''">
-            {{title}}
+            All Short Links
           </h3>
         </div>
         
@@ -18,73 +18,37 @@
                   :class="type === 'dark' ? 'table-dark': ''"
                   :thead-classes="type === 'dark' ? 'thead-dark': 'thead-light'"
                   tbody-classes="list"
-                  :data="tableData">
+                  :data="Links">
         <template slot="columns">
           <th>Title / Original</th>
           <th>Short</th>
           <th>Clicks</th>
           <th>Date/Time</th>
-          <th>Completion</th>
           <th></th>
         </template>
 
         <template slot-scope="{row}">
           <th scope="row">
             <div class="media align-items-center">
-              <a href="#" class="avatar rounded-circle mr-3">
-                <img alt="Image placeholder" :src="row.img">
-              </a>
-              <div class="media-body">
-                <span class="name mb-0 text-sm">{{row.title}} <br> {{row.pro}}</span>
+             <div class="media-body">
+                <span class="name mb-0 text-sm">{{row.OriginalLink.substring(0,40)}}... <br> {{row.Title}}</span>
               </div>
             </div>
           </th>
           <td class="budget">
-            {{row.budget}}
-          </td>
-          <td>
-            
+            {{row.ShortLink}}
           </td>
           <td>
             <div class="avatar-group">
-              <a href="#" class="avatar avatar-sm rounded-circle" data-toggle="tooltip" data-original-title="Ryan Tompson">
-                <img alt="Image placeholder" src="img/theme/team-1-800x800.jpg">
-              </a>
-              <a href="#" class="avatar avatar-sm rounded-circle" data-toggle="tooltip" data-original-title="Romina Hadid">
-                <img alt="Image placeholder" src="img/theme/team-2-800x800.jpg">
-              </a>
-              <a href="#" class="avatar avatar-sm rounded-circle" data-toggle="tooltip" data-original-title="Alexander Smith">
-                <img alt="Image placeholder" src="img/theme/team-3-800x800.jpg">
-              </a>
-              <a href="#" class="avatar avatar-sm rounded-circle" data-toggle="tooltip" data-original-title="Jessica Doe">
-                <img alt="Image placeholder" src="img/theme/team-4-800x800.jpg">
-              </a>
+              {{row.Clicks}}
             </div>
           </td>
 
           <td>
             <div class="d-flex align-items-center">
-              <span class="completion mr-2">{{row.completion}}%</span>
-              <div>
-                <base-progress :type="row.statusType"
-                               :show-percentage="false"
-                               class="pt-0"
-                               :value="row.completion"/>
-              </div>
+              <span class="completion mr-2">{{row.Time}}</span>
             </div>
           </td>
-
-          <td class="text-right">
-            <base-dropdown class="dropdown"
-                           position="right">
-              <a slot="title" class="btn btn-sm btn-icon-only text-light" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class="fas fa-ellipsis-v"></i>
-              </a>
-
-             
-            </base-dropdown>
-          </td>
-
         </template>
 
       </base-table>
@@ -95,16 +59,17 @@
   </div>
 </template>
 <script>
+  import axios from 'axios'
   export default {
     name: 'projects-table',
     props: {
       type: {
         type: String
-      },
-      title: String
+      }
     },
     data() {
       return {
+        Links: [],
         tableData: [
             {
             img: 'img/theme/vue.jpg',
@@ -117,6 +82,17 @@
           }
         ]
       }
+    },
+    mounted: function () {
+    this.getAllLinks()
+  },
+    methods : {
+        getAllLinks () {
+      axios
+        .get('https://www.urys.xyz/getall.php')
+        .then(res => (this.Links = res.data.links))
+        .catch(err => console.error(err))
+    },
     }
   }
 </script>

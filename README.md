@@ -22,3 +22,9 @@ yarn lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+### Customize configuration Of YOURLS SERVER
+1 - Add db.php and getall.php in your path yourls application.
+2 - Edit database information connexion .
+3 - Add header("Access-Control-Allow-Origin: *"); in Line2 of yourls-api.php.
+4 - Enjoy :)
