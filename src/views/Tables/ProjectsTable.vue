@@ -9,7 +9,6 @@
             All Short Links
           </h3>
         </div>
-        
       </div>
     </div>
 
@@ -24,11 +23,10 @@
           <th>Title / Original</th>
           <th>Clicks</th>
           <th>Date/Time</th>
-          <th></th>
         </template>
 
         <template slot-scope="{row}">
-           <th class="budget">
+           <th class="budget" @click="doCopy(row.ShortLink)">
              <div class="media align-items-center">
              <div class="media-body">
                 <span class="name mb-0 text-sm">{{row.ShortLink}}</span> 
@@ -66,7 +64,10 @@
   </div>
 </template>
 <script>
-  import axios from 'axios'
+  import axios from 'axios';
+  import VueClipboard from 'vue-clipboard2';
+  import Vue from "vue";
+  Vue.use(VueClipboard);
   export default {
     name: 'projects-table',
     props: {
@@ -91,7 +92,7 @@
       }
     },
     mounted: function () {
-    this.getAllLinks()
+    this.getAllLinks();
   },
     methods : {
         getAllLinks () {
@@ -100,6 +101,15 @@
         .then(res => (this.Links = res.data.links))
         .catch(err => console.error(err))
     },
+   doCopy (url) {
+        this.$copyText(url).then(function (e) {
+        
+          console.log(e)
+        }, function (e) {
+          
+          console.log(e)
+        })
+      }
     }
   }
 </script>
