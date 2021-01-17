@@ -38,7 +38,11 @@
                                      </div>
                                     <div class="row">
                                         <div class="col-lg-12">
-                                            <h6 @click="doCopy(links.short)">{{links.short}}</h6>
+                                            <div class="form-group has-label">
+                                                <label class="form-control-label">Short Link </label>
+                                                    <h4 @click="doCopy(shortent)">{{shortent}}</h4>
+                                               </div>
+                                            
                                             
                                         </div>
                                         
@@ -64,6 +68,7 @@ import Vue from "vue";
     name: 'addLink',
     data() {
       return {
+        shortent : '',
         links: [
         {
           original: '',
@@ -75,7 +80,6 @@ import Vue from "vue";
      methods: {
     doCopy (url) {
         this.$copyText(url).then(function (e) {
-        alert('copied')
           console.log(e)
         }, function (e) {
           
@@ -101,10 +105,8 @@ import Vue from "vue";
                 url:      this.links.original,
     } })
          .then(res =>{
-               this.links.short = res.data.shorturl
+               this.shortent = res.data.shorturl
                this.doCopy(res.data.shorturl);
-               console.log(res.data.shorturl);
-          
         })
         .catch(err => console.error(err))
     },
