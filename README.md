@@ -1,4 +1,4 @@
-# shorturlyourls
+# shorturlyourls - VUE JS API FOR YOURL SERVER !
 
 ## Project setup
 ```
